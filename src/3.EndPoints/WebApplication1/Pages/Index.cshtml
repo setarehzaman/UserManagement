@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست کاربران</title>
+</head>
+<body>
+    <h2>لیست کاربران</h2>
+
+    <form method="get">
+        <input type="text" name="Prompt" value=@Model.Prompt placeholder="جستجو بر اساس نام..." />
+        <button type="submit">جستجو</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>کد ملی</th>
+                <th>تاریخ تولد</th>
+                <th>تاریخ ثبت نام</th>
+                <th>نوع عضویت</th>
+                <th>جنسیت</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.NationalCode</td>
+                    <td>@user.BirthDate.ToShortDateString()</td>
+                    <td>@user.RegisteredAt.ToShortDateString()</td>
+                    <td>@user.MembershipType</td>
+                    <td>@user.Gender</td>
+                    <td>
+                        <a asp-page="Update" asp-route-id="@user.Id">ویرایش</a>
+                        <a asp-page="Delete" asp-route-id="@user.Id">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="Create">افزودن کاربر جدید</a>
+</body>
+</html>

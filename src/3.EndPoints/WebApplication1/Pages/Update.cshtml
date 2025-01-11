@@ -1,0 +1,36 @@
+﻿@page
+@model WebApplication1.Pages.UpdateModel
+@{
+}
+<h2>ویرایش کاربر</h2>
+
+<form method="post">
+        <input type="hidden" id="Id" asp-for="User.Id" class="form-control" />
+    <div class="form-group">
+        <label for="FirstName">نام</label>
+        <input type="text" id="FirstName" asp-for="User.FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">نام خانوادگی</label>
+        <input type="text" id="LastName" asp-for="User.LastName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Phone">تلفن</label>
+        <input type="text" id="PhoneNumber" asp-for="User.PhoneNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="NationalCode">کد ملی</label>
+        <input type="text" id="NationalCode" asp-for="User.NationalCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="BirthDay">تاریخ تولد</label>
+        <input type="date" id="BirthDate" asp-for="User.BirthDate" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn">ذخیره</button>
+    <a asp-page="Index" class="btn">لغو</a>
+</form>

@@ -1,0 +1,55 @@
+﻿@page
+@model WebApplication1.Pages.CreateModel
+@{
+}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+</head>
+<body>
+    <h1>اضافه کردن کاربر</h1>
+    <form method="post">
+        <label>نام</label>
+        <input type="text" name="User.FirstName" />
+        <br>
+
+        <label>نام خانوادگی</label>
+        <input type="text" name="User.LastName" />
+        <br>
+
+        <label>تاریخ تولد</label>
+        <input type="date" name="User.BirthDate" />
+        <br>
+
+        <label>کد ملی</label>
+        <input type="text" name="User.NationalCode" />
+        <br>
+        <label>شماره موبایل</label>
+        <input type="text" name="User.PhoneNumber" />
+        <br>
+
+        <label>جنسیت</label>
+        <select name="User.Gender">
+            @foreach (var gender in Enum.GetValues(typeof(UserManagement.Domain.Core.Enums.GenderEnum)))
+            {
+                <option value="@gender">@gender</option>
+            }
+        </select>
+        <br>
+
+        <label>وضعیت کاربر</label>
+        <select name="User.MembershipType">
+            @foreach (var membership in Enum.GetValues(typeof(UserManagement.Domain.Core.Enums.UserMembershipTypeEnum)))
+            {
+                <option value="@membership">@membership</option>
+            }
+        </select>
+        <br>
+
+        <button type="submit">افزودن</button>
+    </form>
+</body>
+</html>
